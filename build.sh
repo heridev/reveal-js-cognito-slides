@@ -12,6 +12,7 @@ npm run build:core
 
 # Copy all necessary files to dist-temp
 # cp -r dist/* dist-temp/
+cp reset.css dist/
 cp -r plugin dist/
 cp -r images dist/
 
