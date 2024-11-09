@@ -10,6 +10,7 @@
   "scripts": {
     "test": "gulp test",
     "start": "gulp serve",
+    "production-start": "npm run build && npm run start",
     "build": "gulp build"
   },
   "author": {
