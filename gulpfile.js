@@ -370,6 +370,7 @@ gulp.task("serve", () => {
 });
 
 gulp.task("fix-html", () => {
+  console.log("is this working?");
   return gulp
     .src("index.html")
     .pipe(replace('href="dist/', 'href="'))
