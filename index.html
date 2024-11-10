@@ -18,7 +18,7 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section>
+			<section class="section-box">
 				<h3 style="text-transform: none; font-weight: 100; color: white"> De Semanas a Minutos -</h3>
 				<h4 style="text-transform: none; font-weight: 100; color: white">Simplificando la
 					Autenticación
@@ -30,7 +30,7 @@
 					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 			</section>
 
-			<section>
+			<section class="section-box">
 				<h3 style="text-transform: none; font-weight: 100; color: white">
 					Who's this guy?
 				</h3>
@@ -53,68 +53,105 @@
 					See also: "I'm sure we can add that feature"
 				</p>
 			</section>
-			<section>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					So, you want to build authentication for your app? Let me guess - you're thinking 'I'll just write it myself,
-					how hard can it be?
-				</h3>
-				<img src="images/im-in-hell.webp" style="height: 200px; margin: 0 auto 1rem auto; background: transparent;"
-					class="demo-logo">
-			</section>
 
 			<section class="slide">
 				<div class="section-box">
 					<h3 style="
+					    text-transform: none;
 							margin-bottom: 0.5em;
 							line-height: 1.2;
 							color: #ffffff;
 							font-weight: 600;
-					">So, you want to build authentication for your app?</h3>
+					">
+						So, you want to build authentication for your app?
+					</h3>
 
 					<p style="
 							line-height: 1.4;
 							color: #e0e0e0;
 							margin-bottom: 1em;
 					">Let me guess - you're thinking "I'll just write it myself, how hard can it be?"</p>
-
-					<img src="images/im-in-hell.webp" style="height: 200px; margin: 0 auto 1rem auto; background: transparent;">
 				</div>
 			</section>
 
-			<section>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					Authentication from scratch
-				</h3>
-			</section>
-			<section>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					1. Security Evolution Timeline
-				</h3>
-				<p style="font-size: 25px">Let's take a quick trip down memory lane of authentication security:</p>
-				<ul style="font-size: 20px">
-					<li style="text-decoration: line-through">Plain text passwords: "Because who needs security anyway?"</li>
-					<li>MD5 hashing: "Slightly better, like using a paper lock"</li>
-					<li>SHA-1: "The 'good enough' that wasn't good enough"</li>
-					<li>Modern bcrypt/Argon2: "Finally, something hackers actually have to work for"</li>
-				</ul>
+			<section class="slide">
+				<div class="section-box">
+					<img src="images/tres-doritos-despues.jpeg"
+						style="height: 500px; margin: 0 auto 1rem auto; background: transparent;">
+				</div>
 			</section>
 
-			<section>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					2. The Traditional Approach Pain Points
-				</h3>
-				<ul style="font-size: 20px">
-					<li>When we realized our password reset tokens never expired</li>
-					<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
-					<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
-				</ul>
+			<section class="slide">
+				<div class="section-box">
+					<img src="images/im-in-hell.webp" style="height: 500px; margin: 0 auto 1rem auto; background: transparent;">
+				</div>
 			</section>
 
+			<section class="slide">
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 0.5em;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">Authentication from scratch</h3>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					3. What typically happens when building authentication from scratch:
-				</h3>
+					<p style="
+							line-height: 1.4;
+							color: #e0e0e0;
+							margin-bottom: 1em;
+					">1. Security Evolution Timeline</p>
+
+					<p style="font-size: 25px">Let's take a quick trip down memory lane of authentication security:</p>
+					<ul style="font-size: 20px">
+						<li style="text-decoration: line-through">Plain text passwords: "Because who needs security anyway?"</li>
+						<li>MD5 hashing: "Slightly better, like using a paper lock"</li>
+						<li>SHA-1: "The 'good enough' that wasn't good enough"</li>
+						<li>Modern bcrypt/Argon2: "Finally, something hackers actually have to work for"</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 0.5em;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+						2. The Traditional Approach Pain Points
+					</h3>
+
+					<ul style="font-size: 20px; margin-bottom: 2rem;">
+						<li>When we realized our password reset tokens never expired</li>
+						<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
+						<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 0.5em;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+						3. What typically happens when building authentication from scratch:
+					</h3>
+
+					Remove
+					<ul style="font-size: 20px; margin-bottom: 2rem;">
+						<li>When we realized our password reset tokens never expired</li>
+						<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
+						<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
+					</ul>
+				</div>
 			</section>
 
 			<section data-auto-animate>
