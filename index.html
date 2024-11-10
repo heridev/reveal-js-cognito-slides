@@ -77,13 +77,13 @@
 			<section class="slide">
 				<div class="section-box">
 					<img src="images/tres-doritos-despues.jpeg"
-						style="height: 500px; margin: 0 auto 1rem auto; background: transparent;">
+						style="height: 350px; margin: 0 auto 1rem auto; background: transparent;">
 				</div>
 			</section>
 
 			<section class="slide">
 				<div class="section-box">
-					<img src="images/im-in-hell.webp" style="height: 500px; margin: 0 auto 1rem auto; background: transparent;">
+					<img src="images/im-in-hell.webp" style="height: 350px; background: transparent;">
 				</div>
 			</section>
 
@@ -133,7 +133,7 @@
 				</div>
 			</section>
 
-			<section class="slide">
+			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 style="
 					    text-transform: none;
@@ -142,21 +142,23 @@
 							color: #ffffff;
 							font-weight: 600;
 					">
-						3. What typically happens when building authentication from scratch:
+						3. What typically happens when building authentication from scratch...
 					</h3>
-
-					Remove
-					<ul style="font-size: 20px; margin-bottom: 2rem;">
-						<li>When we realized our password reset tokens never expired</li>
-						<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
-						<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
-					</ul>
 				</div>
 			</section>
 
 			<section data-auto-animate>
-				<h2 style="text-transform: none" data-id="code-title">Day 1</h2>
+				<h3 style="
+					    text-transform: none;
+							margin-bottom: 0.5em;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+					Day 1
+				</h3>
 				<p style="font-size: 28px">Python</p>
+
 				<pre data-id="code-animation">
 						<code class="hljs python" data-trim data-line-numbers>
 							# Python Example
@@ -167,7 +169,15 @@
 			</section>
 
 			<section data-auto-animate>
-				<h2 style="text-transform: none" data-id="code-title">Day 30</h2>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;
+		">
+					Day 30
+				</h3>
 				<pre data-id="code-animation">
 					<code class="hljs python" data-trim data-line-numbers>
 						# Day 30: Reality hits
@@ -239,7 +249,14 @@
 			</section>
 
 			<section data-auto-animate>
-				<h2 style="text-transform: none" data-id="code-title">Day 1</h2>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 1
+				</h3>
 				<p style="font-size: 28px">Ruby</p>
 				<pre data-id="code-animation">
 						<code class="hljs ruby" data-trim data-line-numbers>
@@ -251,7 +268,14 @@
 			</section>
 
 			<section data-auto-animate>
-				<h2 style="text-transform: none" data-id="code-title">Day 30</h2>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 30
+				</h3>
 				<pre data-id="code-animation">
 					<code class="hljs ruby" data-trim data-line-numbers>
 						# Day 30: Reality hits
@@ -326,128 +350,311 @@
 				</pre>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					Notice how it evolved from "just a login" to ...
-				</h3>
-				<img src="images/dog-no-idea-doing.webp" alt="making the match"
-					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
-			</section>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 3rem;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+						Notice how it evolved from "just a login" to ...
+					</h3>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					Modern Authentication Requirements
-				</h3>
-			</section>
-
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white">
-					SSO with social providers
-				</h3>
-
-				<p style="font-size: 29px">
-					"Because nobody remembers passwords anymore, we just trust Google with our digital lives"
-				</p>
-
-				<div>
-					<img src="images/google-analytics-concerned.webp" style="height: 150px;">
+					<img src="images/dog-no-idea-doing.webp" alt="making the match"
+						style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 				</div>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style=" text-transform: none; font-weight: 100; color: white; margin-bottom: 0px">
-					Bearer tokens
-				</h3>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 3rem;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+						Modern Authentication Requirements
+					</h3>
 
-				<p style="font-size: 29px; margin: 0; padding: 0;">
-					"JWT: Just Want Tokens, am I right?"
-				</p>
-
-				<p style="font-size: 23px; margin-top: 40px">
-					<strong>Token Lifecycle:</strong>
-				</p>
-
-				<ul style="font-size: 20px">
-					<li>Access Token: "Your VIP pass that expires way too quickly"</li>
-					<li>Refresh Token: "The token that gets you new tokens"</li>
-					<li>ID Token: "Because one token wasn't complicated enough"</li>
-				</ul>
+					<img src="images/modern-mona-lisa.webp" alt="making the match"
+						style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				</div>
 			</section>
 
-			<section data-auto-animate>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						SSO with social providers
+					</h3>
 
-				<h3 style="text-transform: none; font-weight: 100; color: white; margin-bottom: 0px">
-					MFA
-				</h3>
+					<p style="font-size: 30px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						"Because nobody remembers passwords anymore, we just trust Google with our digital lives"
+					</p>
 
-				<p style="font-size: 29px; margin: 0; padding: 0;">
-					When one password isn't enough to lose
-				</p>
-
-				<p style="font-size: 23px; margin-top: 40px">
-					<strong>MFA Options:</strong>
-				</p>
-
-				<ul style="font-size: 20px">
-					<li>Time-based OTP (TOTP)</li>
-					<li>SMS-based verification</li>
-					<li>Email codes</li>
-					<li>Biometric authentication</li>
-					<li>Hardware security keys</li>
-				</ul>
+					<img src="images/google-analytics-concerned.webp" style="height: 250px;">
+				</div>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white; margin-bottom: 0px">
-					Email workflows
-				</h3>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Bearer tokens
+					</h3>
 
-				<p style="font-size: 29px; margin: 0; padding: 0;">
-					"The art of hoping your emails don't end up in SPAM..."
-				</p>
-				<p style=" font-size: 23px; margin-top: 40px">
-					<strong>The email flows you need to handle:</strong>
-				</p>
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						"JWT: Just Want Tokens, am I right?"
+					</p>
 
-				<ul style="font-size: 20px">
-					<li>Verification</li>
-					<li>Password Reset</li>
-					<li>Email codes</li>
-					<li>MFA Operations</li>
-					<li>Account Notifications</li>
-				</ul>
+					<p style="font-size: 30px; margin-top: 40px">
+						<strong>Token Lifecycle:</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Access Token: "Your VIP pass that expires way too quickly"</li>
+						<li>Refresh Token: "The token that gets you new tokens"</li>
+						<li>ID Token: "Because one token wasn't complicated enough"</li>
+					</ul>
+				</div>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-weight: 100; color: white; margin-bottom: 0px">
-					HIPAA compliance
-				</h3>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						MFA
+					</h3>
 
-				<p style="font-size: 29px; margin: 0; padding: 0;">
-					" Because regular compliance wasn't challenging enough"
-				</p>
-				<p style=" font-size: 23px; margin-top: 40px">
-					<strong>Key Requirements:</strong>
-				</p>
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						When one password isn't enough to lose
+					</p>
 
-				<ul style="font-size: 20px">
-					<li>Encryption at rest</li>
-					<li>Encryption in transit</li>
-					<li>Access controls</li>
-					<li>Audit logging</li>
-					<li>Business Associate Agreements (BAAs)</li>
-				</ul>
+					<p style="font-size: 30px; margin-top: 40px">
+						<strong>MFA Options:</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Time-based OTP (TOTP)</li>
+						<li>SMS-based verification</li>
+						<li>Email codes</li>
+						<li>Biometric authentication</li>
+						<li>Hardware security keys</li>
+					</ul>
+				</div>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style="text-transform: none; font-size: 40px; font-weight: 100; color: white;">
-					"Fun fact: AWS Cognito is HIPAA eligible, which means one less thing to worry about in your compliance
-				</h3>
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Email workflows
+					</h3>
 
-				<p style="font-size: 29px; margin: 0; padding: 0;">
-					And trust me, that checklist is longer than a Soriana/Walmart ticket
-				</p>
-				<img src="images/papiro-largo.webp" style="height: 200px;">
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						"The art of hoping your emails don't end up in SPAM..."
+					</p>
+
+					<p style="font-size: 30px; margin-top: 40px">
+						<strong>The email flows you need to handle:</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Verification</li>
+						<li>Password Reset</li>
+						<li>Email codes</li>
+						<li>MFA Operations</li>
+						<li>Account Notifications</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						HIPAA compliance
+					</h3>
+
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						"Because regular compliance wasn't challenging enough"
+					</p>
+
+					<p style="font-size: 30px; margin-top: 40px">
+						<strong>Key Requirements:</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Encryption at rest</li>
+						<li>Encryption in transit</li>
+						<li>Access controls</li>
+						<li>Audit logging</li>
+						<li>Business Associate Agreements (BAAs)</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Fun fact: AWS Cognito is HIPAA eligible!
+					</h3>
+
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						Which means one less thing to worry about in your compliance
+						and trust me...
+					</p>
+
+					<img src="images/papiro-largo.webp" style="height: 200px;">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Have you played the game called "Estimate the Development Time"?
+					</h3>
+
+					<p style="font-size: 28px;" class="fragment">
+						Developer's estimate: 2 weeks
+					</p>
+
+					<p style="font-size: 28px;" class="fragment">
+						Reality: 3 months
+					</p>
+					<p style="font-size: 28px;" class="fragment">
+						Time spent debugging: Eternal
+					</p>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Authentication Services Comparison
+					</h3>
+
+					<div style="display: flex;">
+						<div style="margin-top: 22px;">
+							<img src="images/auth0-logo.png">
+						</div>
+
+						<div style="margin-top: 22px;">
+							<img src="images/firebase-logo.png">
+						</div>
+						<div>
+							<img src="images/aws-cognito-logo.png">
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<div>
+						<img src="images/auth0-logo.png" width="200" style="margin: 0">
+					</div>
+
+					<p style="font-size: 30px; margin: 0 0 15px 0;">
+						<strong>PROs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>"Enterprise features for enterprise prices"</li>
+						<li>Extensive customization</li>
+						<li>Great documentation</li>
+						<li>Rules engine</li>
+					</ul>
+
+					<p style="font-size: 30px;">
+						<strong>CONs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>"Pricing that makes your CFO cry"</li>
+						<li>Complex setup for advanced features</li>
+						<li>Steep learning curve for customization</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<div>
+						<img src="images/firebase-logo.png" width="200" style="margin: 0">
+					</div>
+
+					<p style="font-size: 30px; margin: 0 0 15px 0;">
+						<strong>PROs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Google's way of saying <strong>We got you</strong></li>
+						<li>Quick setup</li>
+						<li>Good documentation</li>
+						<li>Generous free tier</li>
+					</ul>
+
+					<p style="font-size: 30px;">
+						<strong>CONs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>Vendor lock-in stronger than hotel <br />California</li>
+						<li>Limited customization</li>
+						<li>Google-centric ecosystem</li>
+						<li>Cost scales aggressively</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<div>
+						<img src="images/aws-cognito-logo.png" width="200" style="margin: 0">
+					</div>
+
+					<p style="font-size: 30px; margin: 0 0 15px 0;">
+						<strong>PROs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>"AWS's way of saying 'why use anything else?'"</li>
+						<li>Cost-effective</li>
+						<li>Deep AWS integration</li>
+						<li>HIPAA eligible</li>
+						<li>Flexible user pool configuration</li>
+					</ul>
+
+					<p style="font-size: 30px;">
+						<strong>CONs</strong>
+					</p>
+
+					<ul style="font-size: 28px">
+						<li>"Documentation that feels like a treasure hunt"</li>
+						<li>Learning curve for AWS ecosystem</li>
+						<li>* Some limitations in customization</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Q&A
+					</h3>
+
+					<p style="font-size: 28px;" class="fragment">
+						Time for questions!
+					</p>
+
+					<p style="font-size: 28px;" class="fragment">
+						And no
+					</p>
+
+					<p style="font-size: 40px;" class="fragment">
+						Why is authentication so complicated?<br /> is not a valid question.
+					</p>
+				</div>
 			</section>
 
 		</div>
