@@ -19,15 +19,17 @@
 	<div class="reveal">
 		<div class="slides">
 			<section class="section-box">
-				<h3 style="text-transform: none; font-weight: 100; color: white"> De Semanas a Minutos -</h3>
-				<h4 style="text-transform: none; font-weight: 100; color: white">Simplificando la
+				<h3 style="text-transform: none; font-weight: 100; color: white"> Simplificando la
 					Autenticación
-					para Startups
-					utilizando
+					para Startups utilizando
 					<strong>AWS Cognito</strong>
+				</h3>
+				<h4 style="text-transform: none; font-weight: 100; color: white">
+
 				</h4>
 				<img src="images/making-math.webp" alt="making the match"
 					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				<p style="font-size: 30px">Visit <a href="https://cognitoauth.pro">https://cognitoauth.pro</a></p>
 			</section>
 
 			<section class="section-box">
@@ -103,13 +105,15 @@
 							margin-bottom: 1em;
 					">1. Security Evolution Timeline</p>
 
-					<p style="font-size: 25px">Let's take a quick trip down memory lane of authentication security:</p>
+					<p style="font-size: 25px">Let’s take a brief journey through the history of <br />authentication security:
+					</p>
 					<ul style="font-size: 20px">
 						<li style="text-decoration: line-through">Plain text passwords: "Because who needs security anyway?"</li>
 						<li>MD5 hashing: "Slightly better, like using a paper lock"</li>
 						<li>SHA-1: "The 'good enough' that wasn't good enough"</li>
-						<li>Modern bcrypt/Argon2: "Finally, something hackers actually have to work for"</li>
+						<li>Modern bcrypt/Argon2: "Finally, something hackers actually <br />have to work for"</li>
 					</ul>
+
 				</div>
 			</section>
 
@@ -130,6 +134,7 @@
 						<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
 						<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
 					</ul>
+					<img src="images/headaches.webp" style="width: 300px" />
 				</div>
 			</section>
 
@@ -640,6 +645,712 @@
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
+						Let's start implementing Cognito in a project!
+					</h3>
+
+					<p style="font-size: 28px;" class="fragment">
+						Basically, there are two approaches to configure Cognito in your project
+					</p>
+
+					<ul style="font-size: 28px;" class="fragment">
+						<li>Using it withAuthenticator</li>
+						<li>Customize all the Components</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Using it withAuthenticator
+					</h3>
+
+					<p style="font-size: 28px;">
+						The "5-minute authentication" approach
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							import {
+								withAuthenticator
+							} from '@aws-amplify/ui-react';
+							import '@aws-amplify/ui-react/styles.css';
+
+							function App() {
+								return (
+									<div>
+										<p>If you see this, you're authenticated!</p>
+									</div>
+								);
+							}
+							// Magic line that makes
+							// your PM happy... temporarily
+							export default withAuthenticator(App);
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h4 class="title" style="margin-bottom: 1rem">
+						Pros:
+					</h4>
+
+					<ul style="font-size: 28px">
+						<li>"Look ma, authentication in one line!"</li>
+						<li>Built-in UI for everything</li>
+						<li>PM thinks you're a wizard</li>
+					</ul>
+
+					<h4 class="title" style="margin-bottom: 1rem; margin-top: 2rem">
+						Cons:
+					</h4>
+
+					<ul style="font-size: 28px">
+						<li>UI looks like every other Amplify app</li>
+						<li> Customization is like trying to <br />paint a car while it's moving</li>
+						<li>Your designer is having a panic attack</li>
+					</ul>
+				</div>
+			</section>
+
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Customize everything(part 1)
+					</h3>
+
+					<p style="font-size: 28px;">
+						"The 'I Actually Care About UX' Solution"
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// First, set up your Amplify configuration
+							import { Amplify } from 'aws-amplify';
+
+							Amplify.configure({
+								Auth: {
+									Cognito: {
+										userPoolId: 'us-east-1_example',
+										userPoolClientId: 'your-client-id',
+										signUpAttributes: ['email', 'name'],
+										loginWith: {
+											email: true,
+											phone: false,
+											username: false
+										}
+									}
+								}
+							});
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Customize everything(part 2)
+					</h3>
+
+					<p style="font-size: 28px;">
+						Custom login component example
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							import { signIn } from 'aws-amplify/auth';
+							import { useState } from 'react';
+							
+							const Login = () => {
+								const [isLoading, setIsLoading]
+								  = useState(false);
+								const [error, setError]
+								  = useState<string | null>(null);
+							
+								const handleSubmit = async (
+									e: React.FormEvent
+								) => {
+									e.preventDefault();
+									setIsLoading(true);
+									setError(null);
+							
+									try {
+										const {
+											nextStep,
+											isSignedIn
+										} = await signIn({ 
+											username: email,
+											password,
+											options: {
+												// Prevent user enumeration attacks
+												preventUserExistenceErrors: true
+											}
+										});
+							
+										if (isSignedIn) {
+											// 🎉 Success! Redirect or update state
+											router.push('/dashboard');
+											return;
+										}
+							
+										// Handle different auth challenges
+										switch (nextStep.signInStep) {
+											case 'CONFIRM_SIGN_IN_WITH_SMS_CODE':
+												router.push('/confirm-sms');
+												break;
+											case 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED':
+												router.push('/new-password');
+												break;
+											// Handle other steps...
+										}
+									} catch (err) {
+										setError(
+											err.message || 
+											"Auth failed. Have you tried turning it off and on again?"
+										);
+									} finally {
+										setIsLoading(false);
+									}
+								};
+							
+								return (
+									<div className="min-h-screen flex items-center justify-center">
+										<form onSubmit={handleSubmit} className="space-y-6 w-full max-w-md">
+											{/* Your beautiful, designer-approved UI */}
+										</form>
+									</div>
+								);
+							}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Customize everything(part 3)
+					</h3>
+
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						And the same for the other components: Signup, reset password, confirmation email, etc
+					</p>
+
+					<img src="images/and-so-on-customization.webp" style="height: 300px;">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Cognito lessons
+					</h3>
+
+					<h4 class="title" style="margin-top: 3rem">
+						Lesson 1: Installing and using the right version! - v6 generation 2
+					</h4>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The Old Way (Pre-v6)
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// This is the authentication equivalent of still using a flip phone
+							import { Auth } from 'aws-amplify';
+
+							try {
+								const user = await Auth.signIn(
+									username,
+									password
+								);
+								// Welcome to 2022!
+							} catch (error) {
+								console.error("Even the error handling feels outdated");
+							}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The New Hotness (v6 Generation 2)
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// This is us now. Look how far we've come!
+							// New Way: Focused, Individual Imports
+							import {
+							  signIn,
+								signOut,
+								getCurrentUser
+							} from 'aws-amplify/auth';
+
+							try {
+								const {
+									isSignedIn,
+									nextStep
+								} = await signIn({ 
+									username, 
+									password,
+									options: {
+										// Look at all these fancy options
+										// we didn't have before
+										preventUserExistenceErrors: true
+									}
+								});
+								// Welcome to 2024
+								// where types actually make sense
+							} catch (error) {
+								console.error(
+								  "At least our errors are properly typed now"
+								);
+							}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<!-- <section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Cognito lesson 5: The New Hotness (v6 Generation 2)
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// This is us now. Look how far we've come!
+							import {
+							  signIn,
+								signOut,
+								getCurrentUser
+							} from 'aws-amplify/auth';
+
+							try {
+								const {
+									isSignedIn,
+									nextStep
+								} = await signIn({ 
+									username, 
+									password,
+									options: {
+										// Look at all these fancy options
+										// we didn't have before
+										preventUserExistenceErrors: true
+									}
+								});
+								// Welcome to 2024
+								// where types actually make sense
+							} catch (error) {
+								console.error(
+								  "At least our errors are properly typed now"
+								);
+							}
+						</code>
+					</pre>
+				</div>
+			</section> -->
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						"Spot the Difference" Game
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// Old Way: "The Monolith Approach"
+							Auth.signIn()
+							Auth.confirmSignIn()
+							Auth.signOut()
+
+							// New Way: "The À La Carte Experience"
+							import {
+								signIn,
+								confirmSignIn,
+								signOut
+							} from 'aws-amplify/auth';
+							signIn({ /* your credentials here */ })
+							confirmSignIn({ /* confirmation details */ })
+							signOut()
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						User Management
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// Old Way: "The Swiss Army Knife"
+							const user
+							  = await Auth.currentAuthenticatedUser();
+							const attributes
+							  = await Auth.userAttributes(user);
+
+							// New Way: "The Specialty Tool Set"
+							import {
+								getCurrentUser,
+								fetchUserAttributes
+							} from 'aws-amplify/auth';
+							const {
+								username,
+								userId
+							} = await getCurrentUser();
+							const attributes = await fetchUserAttributes();
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						MFA Handling
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// Old Way: "The Mystery Box"
+							const user = await Auth.confirmSignIn(
+								user,
+								code,
+								mfaType
+							);
+							
+							// New Way: "The Clear Contract"
+							import {
+								confirmSignIn
+							} from 'aws-amplify/auth';
+							const result = await confirmSignIn({
+								challengeResponse: code,
+								options: {
+									serviceOptions: {
+										// Configuration that actually makes sense
+									}
+								}
+							});
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Token handling is different
+					</h3>
+
+					<p style="font-size: 30px">
+						Common surprises that make developers question their life choices:
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// Old: The surprise party you didn't ask for
+							const session = await Auth.currentSession();
+							const token = session
+							  .getAccessToken()
+								.getJwtToken();
+
+							// New: The structured party
+							// with a proper invitation
+							const { tokens } = await fetchAuthSession();
+							const token = tokens.accessToken;
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Amplify configuration is more logical
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// Old: The "throw everything in one object"
+							// approach
+							Amplify.configure({
+								Auth: {
+									// A maze of configuration options
+								}
+							});
+							
+							// New: The "everything has its place" approach
+							Amplify.configure({
+								Auth: {
+									Cognito: {
+										userPoolId: 'your-user-pool-id',
+										userPoolClientId: 'your-client-id',
+										// Clean, organized, beautiful
+									}
+								}
+							});
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The "Token Treasure Hunt"
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// Life was simple... or was it?
+							const session = await Auth.currentSession();
+							const token = session
+							  .getAccessToken()
+								.getJwtToken();
+							
+							// V6: The "where's my token?" moment
+							const session = await fetchAuthSession();
+							console.log(session.tokens?.accessToken);
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The "Solution"
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// The "defensive programming" champion
+							import {
+								fetchAuthSession
+							} from 'aws-amplify/auth';
+							
+							async function getTokenSafely() {
+								const {
+									tokens,
+									hasValidToken
+								} = await fetchAuthSession();
+								
+								if (!hasValidToken) {
+									throw new Error("No token, no entry! 🚫");
+								}
+							
+								if (!tokens?.accessToken) {
+									throw new Error("Token went on vacation 🏖️");
+								}
+							
+								return tokens.accessToken;
+							}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						How to handle MFA? (v6)
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// The "MFA Master" approach
+							import {
+								confirmSignIn,
+								signIn
+							} from 'aws-amplify/auth';
+							
+							async function handleSignInWithMFA(
+								username: string,
+								password: string
+							) {
+								try {
+									const signInOutput = await signIn({
+										username,
+										password
+									});
+									
+									if (
+										signInOutput.nextStep.signInStep
+										  ==='CONFIRM_SIGN_IN_WITH_SMS_CODE'
+									) {
+										// Time to play the MFA game!
+										return {
+											needsCode: true,
+											confirm: async (code: string) => {
+												await confirmSignIn({
+													challengeResponse: code,
+													options: {
+														serviceOptions: {
+															// Configuration that makes sense... finally!
+														}
+													}
+												});
+											}
+										};
+									}
+									
+									return { needsCode: false };
+								} catch (error) {
+									console.error("MFA is having an identity crisis");
+									throw error;
+								}
+							}
+							
+							// Usage that won't make you cry
+							const signInHandler = async () => {
+								const mfaResult = await handleSignInWithMFA('username', 'password');
+								
+								if (mfaResult.needsCode) {
+									// Show MFA input
+									const code = await getUserInputSomehow();
+									await mfaResult.confirm(code);
+								}
+								
+								// Victory dance! 🕺💃
+							};
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The Refresh Token Enigma
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// V5: The "refresh happens automagically"
+							// assumption
+							const session = await Auth.currentSession();
+							// Life was good... until it wasn't
+
+							// V6: The "why am I getting 401s?" revelation
+							const session = await fetchAuthSession();
+							// *Token expired mid-request* 
+							// *Applications crashes*
+							// *Developer questions career choices*
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						One tentative Solution to try...
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// The "I handle refreshes like a pro" approach
+								import {
+									fetchAuthSession
+								} from 'aws-amplify/auth';
+
+								class TokenManager {
+									private refreshPromise: Promise | null = null;
+
+									async getValidToken() {
+										try {
+											const {
+												tokens,
+												hasValidToken
+											} = await fetchAuthSession({
+												// Let's be gentle with our servers
+												forceRefresh: false
+											});
+
+											if (!hasValidToken) {
+												// Time for a refresh!
+												return this.refreshSessionIfNeeded();
+											}
+
+											return tokens!.accessToken;
+										} catch (error) {
+											console.error("Token machine broke");
+											throw error;
+										}
+									}
+
+									private async refreshSessionIfNeeded() {
+										// Only refresh once,
+										// no matter how many requests are waiting
+										if (!this.refreshPromise) {
+											this.refreshPromise = (
+												async () => {
+												  try {
+														const { tokens } = await fetchAuthSession({
+															// Now we mean business
+															forceRefresh: true
+														});
+														return tokens!.accessToken;
+													} finally {
+														this.refreshPromise = null;
+												}
+											})();
+										}
+
+										return this.refreshPromise;
+									}
+								}
+
+								// Usage in your API client
+								const tokenManager = new TokenManager();
+
+								axios
+								  .interceptors
+								  .request
+									.use(
+										async (config) => {
+											const token = await tokenManager.getValidToken();
+											config.headers.Authorization
+											  = `Bearer ${token}`;
+											return config;
+										});
+
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						And....
+					</h3>
+
+					<p style="font-size: 28px;" class="fragment">
+						That's it
+					</p>
+
+					<img src="images/thank-you.webp" style="height: 300px;" class="fragment">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
 						Q&A
 					</h3>
 
@@ -654,6 +1365,27 @@
 					<p style="font-size: 40px;" class="fragment">
 						Why is authentication so complicated?<br /> is not a valid question.
 					</p>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						What does it look the backend integration with Cognito?
+					</h3>
+
+					<p style="font-size: 35px;">
+						Visit <a href="https://cognitoauth.pro">https://cognitoauth.pro</a </p>
+
+					<p style="font-size: 28px;">
+						Shortly, I'll be sharing some repositories with examples:
+					</p>
+
+					<ul style="font-size: 28px;">
+						<li> Python</li>
+						<li>Ruby</li>
+						<li>Next.js</li>
+					</ul>
 				</div>
 			</section>
 
