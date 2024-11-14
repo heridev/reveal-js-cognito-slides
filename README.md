@@ -1,6 +1,6 @@
-# Cognito Auth PRO Starter KIT Slides and presentation
+# Cognito Auth PRO Starter KIT Slides
 
-In this presentation we are sharing a lot of wisdom about AWS Cognito and how to get it right since the beginning
+AWS Cognito Best Practices & Implementation Guide
 
 ## Live presentation can be found at
 
@@ -8,7 +8,7 @@ In this presentation we are sharing a lot of wisdom about AWS Cognito and how to
 
 ## Do you have any questions about Cognito Auth PRO?
 
-Please get in touch with us at email@cognitoauth.pro or visit our official website at cognitoauth.pro
+Please get in touch with us at email@cognitoauth.pro or visit our official website at
 <a href="https://cognitoauth.pro">AWS Cognito Auth Starter Kit Template</a>
 
 ### How do run the server in local?
@@ -17,7 +17,7 @@ Please get in touch with us at email@cognitoauth.pro or visit our official websi
 npm run start
 ```
 
-## How these slides were made?
+## Presentation Credits
 
 Uses
 
