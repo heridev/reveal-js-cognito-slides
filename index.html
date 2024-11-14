@@ -5,7 +5,29 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title> De Semanas a Minutos - Simplificando la Autenticación para Startups utilizando AWS Cognitos</title>
+	<title>Simplifying Authentication for Startups using AWS Cognito | Starter Kit | Cognito Auth PRO</title>
+	<meta name="title"
+		content="Simplifying Authentication for Startups using AWS Cognito | Starter Kit | Cognito Auth PRO">
+	<meta name="description"
+		content="Master AWS Cognito authentication with our comprehensive starter kit. Learn best practices, implementation patterns, and pro tips for secure user management in your startup.">
+
+	<!-- Keywords -->
+	<meta name="keywords"
+		content="AWS Cognito, authentication, user management, startup authentication, cognito tutorial, aws starter kit, user pools, identity pools, oauth, social login, serverless auth">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="AWS Cognito Authentication Starter Kit for Startups">
+	<meta property="og:description"
+		content="Download our AWS Cognito starter kit to implement secure authentication in your startup. Complete with examples, best practices, and implementation guides.">
+
+	<!-- Additional Meta Tags -->
+	<meta name="author" content="Heriberto Perez Magaña">
+	<meta name="robots" content="index, follow">
+	<meta name="language" content="English">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="category" content="Technology">
+	<meta name="topic" content="Cloud Authentication">
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -19,9 +41,8 @@
 	<div class="reveal">
 		<div class="slides">
 			<section class="section-box">
-				<h3 style="text-transform: none; font-weight: 100; color: white"> Simplificando la
-					Autenticación
-					para Startups utilizando
+				<h3 style="text-transform: none; font-weight: 100; color: white">
+					Simplifying Authentication for Startups using
 					<strong>AWS Cognito</strong>
 				</h3>
 				<h4 style="text-transform: none; font-weight: 100; color: white">
@@ -727,6 +748,37 @@
 					</p>
 
 					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							import {
+								Authenticator
+							} from '@aws-amplify/ui-react';
+
+							const root = ReactDOM.createRoot(
+								document.getElementById('root')
+							);
+							root.render(
+								<Container>
+									<Authenticator.Provider>
+										<App />
+									</Authenticator.Provider>
+								</Container>
+							);
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Customize everything(part 2)
+					</h3>
+
+					<p style="font-size: 28px;">
+						Amplify Configuration
+					</p>
+
+					<pre data-id="code-animation">
 						<code class="hljs typescript" data-trim data-line-numbers>
 							// First, set up your Amplify configuration
 							import { Amplify } from 'aws-amplify';
@@ -750,14 +802,15 @@
 				</div>
 			</section>
 
+
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
-						Customize everything(part 2)
+						Customize everything(part 3)
 					</h3>
 
 					<p style="font-size: 28px;">
-						Custom login component example
+						Now, it's time to customize all your components(e.g. Login)
 					</p>
 
 					<pre data-id="code-animation">
@@ -837,7 +890,7 @@
 					</h3>
 
 					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
-						And the same for the other components: Signup, reset password, confirmation email, etc
+						And the same for the rest... Signup, ResetPassword, ConfirmationEmail, etc
 					</p>
 
 					<img src="images/and-so-on-customization.webp" style="height: 300px;">
@@ -847,12 +900,261 @@
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
-						Cognito lessons
+						What I've learned in the last couple of months
+					</h3>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						User Pools: The Pool Party You Can't Leave
 					</h3>
 
-					<h4 class="title" style="margin-top: 3rem">
-						Lesson 1: Installing and using the right version! - v6 generation 2
-					</h4>
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							interface UserPoolLessons {
+								lesson1: "Configure once, cry forever";
+								lesson2: "Some choices are more permanent
+								  than your ex";
+								realityCheck: "You can't change sign-in
+								  options after creation";
+							}
+						</code>
+					</pre>
+
+					<p style="font-size: 28px;">
+						Key Points:
+					</p>
+
+					<ul style="font-size: 28px;">
+						<li>🎯 Plan your user pool like you're planning a mission to Mars</li>
+						<li>🚫 No "just wing it" approach - some settings are permanent</li>
+						<li>⚠️ Sign-in options are written in stone (literally, AWS won't let you change them)</li>
+					</ul>
+
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The Attribute Alphabet
+					</h3>
+
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						Standard vs Custom Attributes
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// Standard Attributes: Free Real Estate!
+							const standardAttributes = {
+								email: "Use it! It's free!", 
+								phone_number: "Already normalized for you",
+								name: "Everyone has one",
+								birthdate: "Built-in validation",
+								address: "Properly structured",
+								// Many more...
+							}
+
+							// Custom Attributes: The Expensive Neighborhood
+							const customAttributes = {
+								custom_field: "Think twice",
+								another_custom: "Do you REALLY need this?",
+								cost: "More storage = More $$$"
+							}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Bonus Tips
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// The "I Wish Someone Told Me This Earlier" List
+							const userPoolTips = {
+								signInOptions: [
+									"Choose wisely, they're permanent",
+									"Email vs Username vs Phone",
+									"Multiple options = More complexity"
+								],
+								
+								dataStrategy: [
+									"Standard attributes are your friends",
+									"Custom attributes cost more",
+									// let's review this in the next slides...
+									"Think about searchable attributes"
+								],
+								
+								migrationStrategy: [
+									"Keep old pool when migrating",
+									"Manual user migration is possible",
+									"Test migration scripts thoroughly"
+								]
+							};
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						To Store or Not to Store
+					</h3>
+
+					<p style="font-size: 35px; line-height: 1.4; color: #e0e0e0; margin-bottom: 0em; ">
+						The Cognito Attribute Prison
+					</p>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// Cognito Attributes: The Hotel California of User Data
+							interface CognitoReality {
+								standardAttributes: "Can't add required ones later";
+								customAttributes: "Limited to 50 attributes";
+								attributeSize: "Limited to 2048 characters";
+								searchability: "Like finding a needle in a haystack";
+								cost: "Pay per MAU + storage";
+							}
+
+							const cognitoLessons = {
+								lesson1: "Required attributes are forever",
+								lesson2: "Optional attributes are mutable",
+								lesson3: "But searching them is expensive",
+								reality: "Requirements WILL change" // They always do
+							};
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The Hybrid Approach
+					</h3>
+
+					<pre data-id="code-animation">
+							<code class="hljs javascript" data-trim data-line-numbers>
+							// Cognito: Keep it minimal
+						interface CognitoUser {
+							sub: string;         // The golden key
+							email: string;       // Required for auth
+							email_verified: boolean;
+							// Keep only auth-related attributes here
+						}
+
+						// Your Database: Keep it flexible
+						interface UserProfile {
+							cognito_sub: string;  // The magical reference
+							// All the good stuff
+							firstName: string;
+							lastName: string;
+							preferences: JSON;
+							metadata: JSON;
+							// Add fields without fear!
+							newFeatureData: any;
+						}
+
+						// The Reality
+						const whyHybridWorks = [
+							"Add fields without Cognito migrations",
+							"Better query performance",
+							"Cheaper storage",
+							"More flexible updates",
+							"Easier backups and migrations"
+						];
+						</code>
+					</pre>
+				</div>
+			</section>
+
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						What does it look like those configurations?
+					</h3>
+					<img src="images/aws-panel-images/1-getting-started-aws-cognito-panel.png" style="height: 300px;">
+
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h6 class="title" style="margin-bottom: 1rem">
+						AWS Cognito panel - part 2
+					</h6>
+					<img src="images/aws-panel-images/2-sign-in-options-review-carefully.png" style="height: 400px;">
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h6 class="title" style="margin-bottom: 1rem">
+						AWS Cognito panel - part 3
+					</h6>
+					<img src="images/aws-panel-images/3-sign-in-configuration-aws-cognito-panel.png" style="height: 450px;">
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h6 class="title" style="margin-bottom: 1rem">
+						AWS Cognito panel - part 4
+					</h6>
+					<img src="images/aws-panel-images/5-enable-user-pool-deletion.png">
+				</div>
+			</section>
+
+			<section class="slide">
+				<div class="section-box">
+					<h6 class="title" style="margin-bottom: 1rem">
+						AWS Cognito panel - part 5
+					</h6>
+					<img src="images/aws-panel-images/7-list-of-users-cognito-panel.png">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Using the right version! <br /> v6 generation 2
+					</h3>
+
+					<img src="images/take-note-version.webp">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						The Old Way (Pre-v6)
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs javascript" data-trim data-line-numbers>
+							// This is the authentication equivalent of still using a flip phone
+							import { Auth } from 'aws-amplify';
+
+							try {
+								const user = await Auth.signIn(
+									username,
+									password
+								);
+								// Welcome to 2022!
+							} catch (error) {
+								console.error("Even the error handling feels outdated");
+							}
+						</code>
+					</pre>
 				</div>
 			</section>
 
@@ -1089,7 +1391,7 @@
 							// approach
 							Amplify.configure({
 								Auth: {
-									// A maze of configuration options
+									// A labyrinth of configuration options
 								}
 							});
 							
@@ -1111,7 +1413,7 @@
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
-						The "Token Treasure Hunt"
+						Getting your Access Token
 					</h3>
 
 					<pre data-id="code-animation">
@@ -1257,8 +1559,67 @@
 
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
+					<h4 class="title" style="margin-bottom: 1rem">
+						Access Token Validity
+					</h4>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							interface DefaultSessionDuration {
+								accessToken: "1 hour";
+								refreshToken: "30 days by default";
+							}
+							
+							interface TokenConfigurationOptions {
+								configurableInCognitoUserPool: true,
+								minimumDuration: "5 minutes (300 seconds)";
+								bestPractice: "Set Access & ID token expiration to match";
+							}
+						</code>
+					</pre>
+
+					<p style="font-size: 28px;">
+						How to validate that accessToken is not refresh automatically in V6 <a
+							href="https://tinyurl.com/cog-session">https://tinyurl.com/cog-session</a>
+					</p>
+
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
-						One tentative Solution to try...
+						Start simple and monitor your tokens
+					</h3>
+
+					<pre data-id="code-animation">
+						<code class="hljs typescript" data-trim data-line-numbers>
+							export async function fetchCognitoUserToken(): Promise<string> {
+								try {
+									// if the session has already expired,
+									// it seems like the React SDK Cognito V6
+									// will get a new one automatically
+									const session = await fetchAuthSession();
+									return session
+									  .tokens?
+										.accessToken?
+										.toString() || '';
+								} catch (error) {
+									console.error(
+										'Error fetching accessToken:',
+										error
+									);
+									return '';
+								}
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						Then you can implement something else...
 					</h3>
 
 					<pre data-id="code-animation">
@@ -1337,11 +1698,45 @@
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
+						What does it look the backend integration with Cognito?
+					</h3>
+					<img src="images/quick-overview-of-architecture-cognito-api.png">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
+						What does it look the backend integration with Cognito?
+					</h3>
+
+					<p style="font-size: 35px;">
+						Visit <a href="https://cognitoauth.pro">https://cognitoauth.pro</a </p>
+
+					<p style="font-size: 28px;">
+						Shortly, I'll be sharing some open-source repositories with examples:
+					</p>
+
+					<ul style="font-size: 28px;">
+						<li>Python</li>
+						<li>Ruby</li>
+						<li>Next.js</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 class="title" style="margin-bottom: 1rem">
 						And....
 					</h3>
 
 					<p style="font-size: 28px;" class="fragment">
 						That's it
+					</p>
+
+					<p style="font-size: 28px;" class="fragment">
+						We covered a lot — that's because there's a lot to cover.
 					</p>
 
 					<img src="images/thank-you.webp" style="height: 300px;" class="fragment">
@@ -1365,27 +1760,6 @@
 					<p style="font-size: 40px;" class="fragment">
 						Why is authentication so complicated?<br /> is not a valid question.
 					</p>
-				</div>
-			</section>
-
-			<section class="slide" data-auto-animate>
-				<div class="section-box">
-					<h3 class="title" style="margin-bottom: 1rem">
-						What does it look the backend integration with Cognito?
-					</h3>
-
-					<p style="font-size: 35px;">
-						Visit <a href="https://cognitoauth.pro">https://cognitoauth.pro</a </p>
-
-					<p style="font-size: 28px;">
-						Shortly, I'll be sharing some repositories with examples:
-					</p>
-
-					<ul style="font-size: 28px;">
-						<li> Python</li>
-						<li>Ruby</li>
-						<li>Next.js</li>
-					</ul>
 				</div>
 			</section>
 
