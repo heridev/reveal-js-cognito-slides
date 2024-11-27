@@ -22,7 +22,7 @@
 		content="Download our AWS Cognito starter kit to implement secure authentication in your startup. Complete with examples, best practices, and implementation guides.">
 
 	<!-- Additional Meta Tags -->
-	<meta name="author" content="Heriberto Perez Magaña">
+	<meta name="author" content="Heriberto Magaña">
 	<meta name="robots" content="index, follow">
 	<meta name="language" content="English">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +51,8 @@
 				<img src="images/making-math.webp" alt="making the match"
 					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 				<p style="font-size: 30px">Visit <a href="https://cognitoauth.pro">https://cognitoauth.pro</a></p>
+				<p style="font-size: 30px">Slides <a href="https://slides.cognitoauth.pro">https://slides.cognitoauth.pro</a>
+				</p>
 			</section>
 
 			<section class="section-box">
@@ -61,10 +63,12 @@
 					style="height: 200px; margin: 0 auto 1rem auto; background: transparent;" class="demo-logo">
 
 				<h5 style="text-transform: none; font-weight: 100; color: white" class="fragment">
-					Heriberto Pérez Magaña
+					Heriberto Magaña
 				</h5>
+				<p style="font-size: 30px" class="fragment">Visit <a href="https://elh.mx">https://elh.mx</a></p>
 				<p style=" font-size: 19px;" class="fragment">
-					Full stack software engineer at Magmalabs.io
+					Full stack software engineer at <a style="color: rgb(248, 72, 72)"
+						href="https://Magmalabs.io">Magmalabs.io</a>
 				</p>
 				<p style="font-size: 28px;" class="fragment">
 					full·stack /ˈfo͝olˌstak/
@@ -73,7 +77,7 @@
 					noun: A developer species known for their inability <br /> to say "no" to customer requests
 				</p>
 				<p style="font-size: 19px;" class="fragment">
-					See also: "I'm sure we can add that feature"
+					You know, "I'm sure we can add that feature"
 				</p>
 			</section>
 
@@ -81,7 +85,6 @@
 				<div class="section-box">
 					<h3 style="
 					    text-transform: none;
-							margin-bottom: 0.5em;
 							line-height: 1.2;
 							color: #ffffff;
 							font-weight: 600;
@@ -92,8 +95,16 @@
 					<p style="
 							line-height: 1.4;
 							color: #e0e0e0;
+					">Let me guess - you're thinking.."</p>
+					<p style="
+							line-height: 1.4;
+							color: #e0e0e0;
 							margin-bottom: 1em;
-					">Let me guess - you're thinking "I'll just write it myself, how hard can it be?"</p>
+					">How hard can it be?"</p>
+
+					<img src="images/easy-peasy-lemon-squeezy.webp"
+						style="height: 200px; margin: 0 auto 1rem auto; background: transparent;">
+
 				</div>
 			</section>
 
@@ -110,6 +121,28 @@
 				</div>
 			</section>
 
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<img src="images/play-a-game-two.webp"
+						style="height: 200px; margin: 0 auto 1rem auto; background: transparent;" class="demo-logo">
+
+					<h3 class="title" style="margin-bottom: 1rem">
+						"Estimate the Development Time for Authentication"
+					</h3>
+
+					<p style="font-size: 28px;" class="fragment">
+						Developer's estimate: 2 weeks
+					</p>
+
+					<p style="font-size: 28px;" class="fragment">
+						Reality: 3 months
+					</p>
+					<p style="font-size: 28px;" class="fragment">
+						Time spent debugging: Eternal
+					</p>
+				</div>
+			</section>
+
 			<section class="slide">
 				<div class="section-box">
 					<h3 style="
@@ -118,13 +151,7 @@
 							line-height: 1.2;
 							color: #ffffff;
 							font-weight: 600;
-					">Authentication from scratch</h3>
-
-					<p style="
-							line-height: 1.4;
-							color: #e0e0e0;
-							margin-bottom: 1em;
-					">1. Security Evolution Timeline</p>
+					">Security Evolution Timeline</h3>
 
 					<p style="font-size: 25px">Let’s take a brief journey through the history of <br />authentication security:
 					</p>
@@ -138,7 +165,7 @@
 				</div>
 			</section>
 
-			<section class="slide">
+			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 style="
 					    text-transform: none;
@@ -147,15 +174,30 @@
 							color: #ffffff;
 							font-weight: 600;
 					">
-						2. The Traditional Approach Pain Points
+						Three Paths to Authentication
 					</h3>
 
-					<ul style="font-size: 20px; margin-bottom: 2rem;">
-						<li>When we realized our password reset tokens never expired</li>
-						<li>That exciting moment when we found out JWT tokens aren't meant for sessions</li>
-						<li>Custom authentication implementations: The gift that keeps on giving... headaches</li>
-					</ul>
-					<img src="images/headaches.webp" style="width: 300px" />
+					<pre>
+						<code class="hljs typescript" data-id="code-animation" data-trim data-line-numbers>
+							// Path 1: The Brave Soul's Journey
+							const buildFromScratch = {
+								description: "Rolling your own auth",
+								timeToImplement: "∞",
+								securityAuditResult: "Please don't"
+							};
+						</code>
+					</pre>
+
+					<pre>
+						<code class="hljs typescript" data-trim data-line-numbers>
+							// Path 2: The Framework Explorer's Route
+							const useLibraries = {
+								devise: "Ruby's gift to authentication",
+								djangoAllauth: "Python's authentication swiss army knife",
+								passportjs: "Node's 500+ ways to authenticate",
+							};
+						</code>
+					</pre>
 				</div>
 			</section>
 
@@ -168,110 +210,34 @@
 							color: #ffffff;
 							font-weight: 600;
 					">
-						3. What typically happens when building authentication from scratch...
+						Three Paths to Authentication
 					</h3>
+
+					<pre>
+						<code class="hljs typescript" data-id="code-animation" data-trim data-line-numbers>
+							// Path 3: The Cloud Embracer's Way
+							const useServices = {
+								cognito: "AWS's auth powerhouse",
+								auth0: "Enterprise's favorite",
+								firebase: "Google's auth playground"
+							};
+						</code>
+					</pre>
 				</div>
 			</section>
 
-			<section data-auto-animate>
-				<h3 style="
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
 					    text-transform: none;
 							margin-bottom: 0.5em;
 							line-height: 1.2;
 							color: #ffffff;
 							font-weight: 600;
 					">
-					Day 1
-				</h3>
-				<p style="font-size: 28px">Python</p>
-
-				<pre data-id="code-animation">
-						<code class="hljs python" data-trim data-line-numbers>
-							# Python Example
-							async def authenticate(username: str, password: str):
-									return await database.find_user(username, password)
-					</code>
-				</pre>
-			</section>
-
-			<section data-auto-animate>
-				<h3 style="
-				text-transform: none;
-				margin-bottom: 0.5em;
-				line-height: 1.2;
-				color: #ffffff;
-				font-weight: 600;
-		">
-					Day 30
-				</h3>
-				<pre data-id="code-animation">
-					<code class="hljs python" data-trim data-line-numbers>
-						# Day 30: Reality hits
-						async def authenticate(
-								username: str,
-								password: str,
-								device_id: str = None,
-								mfa_token: str = None,
-								social_provider: str = None,
-								refresh_token: str = None,
-								client_id: str = None,
-								ip_address: str = None,
-								user_agent: str = None,
-								remember_me: bool = False,
-								session_duration: int = None,
-								login_attempt: int = 0,
-								geolocation: dict = None,
-								risk_score: float = None,
-								recovery_code: str = None,
-								# ... and more parameters
-						):
-								# Validate input parameters
-								if not username or not password:
-										raise AuthenticationError("Missing credentials")
-								
-								# Check rate limiting
-								if await is_rate_limited(ip_address):
-										raise RateLimitError("Too many attempts")
-								
-								# Handle social authentication
-								if social_provider:
-										return await handle_social_auth(social_provider, client_id)
-								
-								# Verify device trust
-								if device_id and not await is_trusted_device(device_id):
-										await send_device_verification(username)
-										raise DeviceVerificationRequired()
-								
-								# Basic authentication
-								user = await database.find_user_by_username(username)
-								if not user or not verify_password(password, user.password_hash):
-										await log_failed_attempt(username, ip_address)
-										raise InvalidCredentials()
-								
-								# Check MFA if enabled
-								if user.mfa_enabled:
-										if not mfa_token:
-												raise MFARequired()
-										if not await verify_mfa(user.id, mfa_token):
-												raise InvalidMFAToken()
-								
-								# Generate session
-								session = await create_session(
-										user_id=user.id,
-										device_id=device_id,
-										ip_address=ip_address,
-										user_agent=user_agent,
-										duration=session_duration
-								)
-								
-								# Return tokens
-								return {
-										'access_token': generate_jwt(session),
-										'refresh_token': refresh_token or generate_refresh_token(),
-										'user': user.to_dict()
-								}
-					</code>
-				</pre>
+						What typically happens when building authentication from scratch...
+					</h3>
+				</div>
 			</section>
 
 			<section data-auto-animate>
@@ -300,11 +266,11 @@
 				line-height: 1.2;
 				color: #ffffff;
 				font-weight: 600;">
-					Day 30
+					Day 31
 				</h3>
-				<pre data-id="code-animation">
-					<code class="hljs ruby" data-trim data-line-numbers>
-						# Day 30: Reality hits
+				<pre>
+					<code class="hljs ruby" data-id="code-animation" data-trim data-line-numbers>
+						# Day 31
 						def authenticate(
 							username:,
 							password:,
@@ -317,6 +283,21 @@
 							user_agent: nil,
 							remember_me: false,
 							session_duration: nil,
+					</code>
+				</pre>
+			</section>
+
+			<section data-auto-animate>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 31
+				</h3>
+				<pre>
+					<code class="hljs ruby" data-id="code-animation" data-trim data-line-numbers>
 							login_attempt: 0,
 							geolocation: nil,
 							risk_score: nil,
@@ -331,7 +312,21 @@
 								Rails.logger.warn("Rate limit exceeded for IP: #{ip_address}")
 								raise RateLimitError, "Too many attempts"
 							end
-							
+					</code>
+				</pre>
+			</section>
+
+			<section data-auto-animate>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 31
+				</h3>
+				<pre>
+					<code class="hljs ruby" data-id="code-animation" data-trim data-line-numbers>
 							# Social auth handling
 							if social_provider.present?
 								return handle_social_auth(provider: social_provider, client_id: client_id)
@@ -345,6 +340,21 @@
 							
 							# Find and authenticate user
 							user = User.find_by(username: username)
+					</code>
+				</pre>
+			</section>
+
+			<section data-auto-animate>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 31
+				</h3>
+				<pre>
+					<code class="hljs ruby" data-id="code-animation" data-trim data-line-numbers>
 							unless user&.authenticate(password)
 								log_failed_attempt(username, ip_address)
 								raise InvalidCredentials
@@ -357,6 +367,24 @@
 							end
 							
 							# Create session
+							session = Session.create!(
+					</code>
+				</pre>
+			</section>
+
+			<section data-auto-animate>
+				<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+					Day 31
+				</h3>
+				<pre>
+					</code>
+					<code class="hljs ruby" data-id="code-animation" data-trim data-line-numbers>
+						  # Create session
 							session = Session.create!(
 								user: user,
 								device_id: device_id,
@@ -375,6 +403,7 @@
 					</code>
 				</pre>
 			</section>
+
 
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
@@ -402,11 +431,223 @@
 							color: #ffffff;
 							font-weight: 600;
 					">
+						But Heriberto, Who does authentication from scratch? if we have:
+					</h3>
+					<ul>
+						<li>Devise</li>
+						<li>django-allauth</li>
+						<li>Passport.js</li>
+					</ul>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 3rem;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
+						What can be wrong with that?
+					</h3>
+
+					<img src="images/this-is-fine.gif" alt="making the match"
+						style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 1: The Innocent Flask Beginning
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs python" data-trim data-line-numbers>
+						# app.py
+						from flask_login import LoginManager, UserMixin
+
+						class User(UserMixin):
+								pass
+
+						login_manager = LoginManager()
+						# "Look ma, authentication!" 
+						# *Narrator: Little did they know...*
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 90: The Django Allauth Apocalypse
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs python" data-trim data-line-numbers>
+						# settings.py
+						INSTALLED_APPS = [
+								'django.contrib.auth',  # The basics
+								'django.contrib.sites',  # Because reasons
+								'allauth',             # The chosen one
+								'allauth.account',     # Email stuff
+								'allauth.socialauth',  # "Users want Google login"
+								'custom_auth',         # "We'll keep it simple"
+								'more_custom_auth',    # Narrator: "They didn't"
+								'even_more_auth',      # "Just one more feature"
+								'please_stop_auth',    # Added at 3 AM
+						]
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 1: Just a Simple Auth System
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs ruby" data-trim data-line-numbers>
+						# devise.rb
+						Rails.application.config.devise do |config|
+							config.mailer_sender = 'please-change-me-at-config-initializers@example.com'
+							config.sign_out_via = :delete
+						end
+						
+						# user.rb
+						class User < ApplicationRecord
+							devise :database_authenticatable, :registerable,
+										 :recoverable, :rememberable, :validatable
+						end
+						
+						# *Adusts hands* "We're done here!" 
+						# Narrator: They were not done.
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 180: What Have We Created?
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs ruby" data-trim data-line-numbers>
+						# devise.rb
+						Rails.application.config.devise do |config|
+							config.mailer_sender = 'notifications@startup-name.com'
+							config.sign_out_via = [:delete, :get] # Because some legacy endpoint needs GET 🤷‍♂️
+							config.password_length = 12..128 # Security audit said we need this
+							config.lock_strategy = :failed_attempts # Someone's been brute forcing
+							config.unlock_strategy = :both # Because users forget they're locked out
+							config.maximum_attempts = 5 # Product team wanted 10, security team wanted 3
+							config.unlock_in = 1.hour # Compromise is the art of nobody being happy
+							config.last_attempt_warning = true # "Please stop failing"
+							config.reset_password_within = 6.hours # Used to be 24, until That Incident
+							config.sign_in_after_reset_password = false # Trust issues
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 180: What Have We Created?
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs ruby" data-trim data-line-numbers>
+							# OAuth because "everyone else has it"
+							config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+							config.omniauth :github, ENV['GITHUB_CLIENT_ID'], ENV['GITHUB_CLIENT_SECRET']
+							config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+							# *whispers* We don't talk about the Twitter OAuth migration
+						end
+
+						# user.rb
+							class User < ApplicationRecord
+								devise :database_authenticatable, :registerable,
+											:recoverable, :rememberable, :validatable,
+											:confirmable, # "Users keep signing up with fake emails"
+											:lockable,    # "Someone's trying to hack us"
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+				text-transform: none;
+				margin-bottom: 0.5em;
+				line-height: 1.2;
+				color: #ffffff;
+				font-weight: 600;">
+						Day 180: What Have We Created?
+					</h3>
+					<pre>
+					</code>
+					<code class="hljs ruby" data-trim data-line-numbers>
+						# user.rb
+							class User < ApplicationRecord
+								devise :database_authenticatable, :registerable,
+											:recoverable, :rememberable, :validatable,
+											:confirmable, # "Users keep signing up with fake emails"
+											:lockable,    # "Someone's trying to hack us"
+											:timeoutable, # Security audit again
+											:trackable,   # "We need analytics!"
+											:omniauthable # "Like every other app"
+					</code>
+				</pre>
+				</div>
+			</section>
+
+			<section class="slide" data-auto-animate>
+				<div class="section-box">
+					<h3 style="
+					    text-transform: none;
+							margin-bottom: 3rem;
+							line-height: 1.2;
+							color: #ffffff;
+							font-weight: 600;
+					">
 						Modern Authentication Requirements
 					</h3>
 
 					<img src="images/modern-mona-lisa.webp" alt="making the match"
-						style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+						style="height: 246px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
 				</div>
 			</section>
 
@@ -530,25 +771,6 @@
 					</p>
 
 					<img src="images/papiro-largo.webp" style="height: 200px;">
-				</div>
-			</section>
-
-			<section class="slide" data-auto-animate>
-				<div class="section-box">
-					<h3 class="title" style="margin-bottom: 1rem">
-						Have you played the game called "Estimate the Development Time"?
-					</h3>
-
-					<p style="font-size: 28px;" class="fragment">
-						Developer's estimate: 2 weeks
-					</p>
-
-					<p style="font-size: 28px;" class="fragment">
-						Reality: 3 months
-					</p>
-					<p style="font-size: 28px;" class="fragment">
-						Time spent debugging: Eternal
-					</p>
 				</div>
 			</section>
 
@@ -900,7 +1122,7 @@
 			<section class="slide" data-auto-animate>
 				<div class="section-box">
 					<h3 class="title" style="margin-bottom: 1rem">
-						Key AWS Cognito Insights
+						AWS Cognito Lessons
 					</h3>
 					<img src="images/eureka.webp" style="height: 300px;">
 				</div>
@@ -1069,44 +1291,6 @@
 						];
 						</code>
 					</pre>
-				</div>
-			</section>
-
-
-			<section class="slide" data-auto-animate>
-				<div class="section-box">
-					<h3 class="title" style="margin-bottom: 1rem">
-						AWS Configuration Overview
-					</h3>
-					<img src="images/aws-panel-images/1-getting-started-aws-cognito-panel.png" style="height: 300px;">
-
-				</div>
-			</section>
-
-			<section class="slide">
-				<div class="section-box">
-					<h6 class="title" style="margin-bottom: 1rem">
-						AWS Cognito panel - part 2
-					</h6>
-					<img src="images/aws-panel-images/3-sign-in-configuration-aws-cognito-panel.png" style="height: 450px;">
-				</div>
-			</section>
-
-			<section class="slide">
-				<div class="section-box">
-					<h6 class="title" style="margin-bottom: 1rem">
-						AWS Cognito panel - part 3
-					</h6>
-					<img src="images/aws-panel-images/5-enable-user-pool-deletion.png">
-				</div>
-			</section>
-
-			<section class="slide">
-				<div class="section-box">
-					<h6 class="title" style="margin-bottom: 1rem">
-						AWS Cognito panel - part 4
-					</h6>
-					<img src="images/aws-panel-images/7-list-of-users-cognito-panel.png">
 				</div>
 			</section>
 
@@ -1704,11 +1888,30 @@
 						Shortly, I'll be sharing demo repositories for(tentative):
 					</p>
 
-					<ul style="font-size: 28px;">
+					<!-- <ul style="font-size: 28px;">
 						<li>Python</li>
-						<li>Ruby</li>
+						<li>Ruby on Rails</li>
 						<li>Next.js</li>
-					</ul>
+					</ul> -->
+
+
+					<p style="font-size: 28px;">
+						Python <br />
+						<a style="font-size: 23px"
+							href="https://github.com/heridev/cognito-auth-fastapi-rest-api">https://github.com/heridev/cognito-auth-fastapi-rest-api
+						</a>
+					</p>
+
+					<p style="font-size: 28px;">
+						Ruby on Rails <br />
+						<a style="font-size: 23px" href="https://github.com/heridev/xxxxxxx">https://github.com/heridev/??????</a>
+					</p>
+
+					<p style="font-size: 28px;">
+						Next.js
+						<br />
+						<a style="font-size: 23px" href="https://github.com/heridev/xxxxxxx">https://github.com/heridev/??????</a>
+					</p>
 				</div>
 			</section>
 
